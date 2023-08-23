@@ -5,8 +5,10 @@ import Loader from "../ui/Loader";
 
 function CountryDetails() {
   const countryDetails = useLoaderData();
-  const nativeName = Object.values(countryDetails[0].name?.nativeName).pop();
   const navigate = useNavigate();
+
+  const nativeName = Object.values(countryDetails[0].name?.nativeName).pop();
+  const currencies = Object.values(countryDetails[0].currencies);
 
   const handleClick = (n) => {
     navigate(`/country/${n}`);
@@ -66,9 +68,9 @@ function CountryDetails() {
                   <div className="info__holder">
                     <span className="title">Currencies: </span>
                     <span>
-                      {Object.values(country?.currencies).map((currency) =>
-                        Object.values(currency?.name)
-                      )}
+                      {Object.values(currencies)
+                        .map((currency) => currency.name)
+                        .join(", ")}
                     </span>
                   </div>
 

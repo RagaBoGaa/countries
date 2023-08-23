@@ -8,6 +8,9 @@ import Filters from "../components/Filters";
 
 function HomePage() {
   const countries = useLoaderData();
+  const filCountries = countries.filter(
+    (country) => country.capital != "Jerusalem"
+  );
   const [region, setRegion] = useState("all");
   const [query, setQuery] = useState("");
   const [filteredCountries, setFilteredCountries] = useState([]);
@@ -20,10 +23,10 @@ function HomePage() {
 
   useEffect(() => {
     setIsLoading(true);
-    let filtered = countries;
+    let filtered = filCountries;
 
     if (region !== "all") {
-      filtered = countries.filter((country) => country.region === region);
+      filtered = filCountries.filter((country) => country.region === region);
     }
 
     if (query) {
@@ -34,7 +37,7 @@ function HomePage() {
 
     setFilteredCountries(filtered);
     setIsLoading(false);
-  }, [countries, region, query]);
+  }, [filCountries, region, query]);
 
   const handleChange = (e) => {
     setRegion(e.target.value);
