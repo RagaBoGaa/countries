@@ -10,7 +10,9 @@
   --bgClr: hsl(207, 26%, 17%);
   --textClr: hsl(0, 0%, 100%);
   --Elements: hsl(209, 23%, 22%);
-  --boxShadow: hsl(200, 15%, 8%);
+  --shadow: 0 2px 4px hsla(0, 0%, 0%, 0.2);
+  --pagination: hsl(0, 0%, 90%);
+  --pagination-arrows: hsl(0, 9%, 85%);
 }
 
 :root[data-theme="theme-light"] {
@@ -18,7 +20,10 @@
   --textClr: hsl(200, 15%, 8%);
   --Elements: hsl(0, 0%, 100%);
   --inputClr: hsl(0, 0%, 52%);
-  --boxShadow: hsl(0, 0%, 52%);
+  --shadow: 0 1px 4px hsla(0, 0%, 0%, 0.1);
+  --pagination: hsl(208, 26%, 18%);
+  --pagination-text-clr: hsl(0, 0%, 90%);
+  --pagination-arrows: hsl(208, 26%, 18%);
 }
 
 /* Resets */
@@ -103,7 +108,8 @@ main {
   overflow: hidden;
   background-color: var(--bgClr);
   border-radius: 8px;
-  box-shadow: 0px 0px 3px 0px var(--boxShadow);
+  box-shadow: var(--shadow);
+  max-width: 250px;
 }
 
 .card .holder img {
@@ -173,7 +179,7 @@ main {
   background-color: var(--Elements);
   outline: none;
   border: none;
-  box-shadow: 0px 0px 5px 0px rgba(100, 101, 102, 0.3);
+  box-shadow: var(--shadow);
 }
 
 .search input::placeholder {
@@ -185,7 +191,7 @@ main {
   border: none;
   outline: none;
   border-radius: 6px;
-  box-shadow: 0px 0px 5px 0px rgba(100, 101, 102, 0.3);
+  box-shadow: var(--shadow);
   background-color: var(--Elements);
   color: var(--textClr);
   border-right: 16px solid transparent;
@@ -216,7 +222,7 @@ option {
   border: none;
   outline: none;
   border-radius: 6px;
-  box-shadow: 0px 0px 3px 0px var(--boxShadow);
+  box-shadow: var(--shadow);
   cursor: pointer;
 }
 
@@ -274,12 +280,70 @@ option {
   color: var(--textClr);
   padding: 0.1rem 1.5rem;
   border-radius: 6px;
-  box-shadow: 0px 0px 3px 0px var(--boxShadow);
+  box-shadow: var(--shadow);
 }
 
 .borders {
   margin-inline-start: 0.5rem;
   margin-block-start: 0.5rem;
+}
+
+.pagination__section {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  margin: 4.25rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.pagination__link {
+  color: var(--pagination-arrows);
+  padding: 0.8rem;
+}
+
+.pagination__page {
+  height: 2.5rem;
+}
+
+.pagination__page,
+.pagination__link {
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--Elements);
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  aspect-ratio: 1 / 1;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.pagination__link--active {
+  background-color: var(--pagination) !important;
+  color: var(--pagination-text-clr) !important;
+}
+
+.pagination__link--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.pagination .break {
+  color: var(--textClr);
 }
 
 /* loader absolute inset-0 flex items-center justify-center bg-slate-200/20 backdrop-blur-sm */
@@ -359,6 +423,10 @@ option {
   .right__holder {
     flex-direction: column;
   }
+  .card .holder {
+    max-width: 250px;
+  }
+
   .text__holder__right {
     margin-block-start: 2rem;
   }
