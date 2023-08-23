@@ -71,6 +71,7 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [Vite](https://vitejs.dev/) - Build tool
 - [React-Router v.6](https://reactrouter.com/en/main) - Routing & fetching data from API
+- [React-Paginate](https://www.npmjs.com/package/react-paginate) - For pagination
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox & Grid
